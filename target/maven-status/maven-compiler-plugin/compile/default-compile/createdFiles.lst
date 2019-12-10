@@ -1,0 +1,6 @@
+groceryinventory/GroceryInventory.class
+groceryinventory/feign/NotificationInterface.class
+groceryinventory/GroceryInventoryController.class
+groceryinventory/feign/OrderingInterface.class
+groceryinventory/GroceryInventoryApplication.class
+groceryinventory/SwaggerConfig.class
