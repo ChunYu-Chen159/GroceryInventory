@@ -51,7 +51,7 @@ public class GroceryInventory {
             return "{}";
         }
 	}
-	public static String getGroceryByID(String ID) {
+	public String getGroceryByID(String ID) {
 		try {  
             
 			System.out.println("MongoDBConnect to database begin");
@@ -131,7 +131,7 @@ public class GroceryInventory {
 
 
 
-	public static String getGroceryFromOrderList(String userID, String data)
+	public String getGroceryFromOrderList(String userID, String data)
 	{
 		String result = "[";
 		String groceryData = "";

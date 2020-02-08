@@ -3,21 +3,66 @@ package groceryinventory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import org.springframework.http.MediaType;
+
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+
+
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class GroceryInventoryTest 
 {
+
+	private MockMvc mockMvc;
+
 	@Autowired
-	private GroceryInventoryController groceryInventory;
+	private GroceryInventoryController groceryInventoryController;
+
+	@MockBean
+	private GroceryInventory groceryInventory;
+
+
+	@Before
+	public void setup() throws Exception {
+		this.mockMvc = standaloneSetup(this.groceryInventoryController).build();// Standalone context
+
+	}
+
+	@Test
+	public void testGetAPI() throws Exception {
+		//Mocking
+		GroceryInventory groceryInventoryMock = mock(GroceryInventory.class);
+		when(groceryInventoryMock.getGroceryByID("ID")).thenReturn(new String("123456"));
+
+		// verify(groceryInventoryMock).getGroceryByID("ID");
+
+/*		ResultActions resultActions = mockMvc.perform(get("/getGroceryByID").contentType(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isOk());
+			//.andExpect(jsonPath("ID", is("123456")));*/
+	}
+
 	
 	//controller's test
 	
@@ -25,7 +70,7 @@ public class GroceryInventoryTest
 	public void testIndex()
 	{
 		System.out.println("測試連線是否成功");
-		assertEquals("success", groceryInventory.index());
+		assertEquals("success", groceryInventoryController.index());
 	}
 /*
 	@Test

@@ -70,7 +70,8 @@ public class GroceryInventoryController {
 	@RequestMapping(value = "getGroceryByID", method = RequestMethod.GET)
     public String getGroceryByID(@ApiParam(required = true, name = "ID", value = "商品編號") @RequestParam("ID") String ID)
     {
-    	return GroceryInventory.getGroceryByID(ID);
+		GroceryInventory groceryInventory = new GroceryInventory();
+    	return groceryInventory.getGroceryByID(ID);
     }
 
 	@FeignRequest(client = NotificationInterface.class, method = "getNotification", parameterTypes = String.class)
@@ -127,9 +128,9 @@ public class GroceryInventoryController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		return GroceryInventory.getGroceryFromOrderList(userID, data);
+
+		GroceryInventory groceryInventory = new GroceryInventory();
+		return groceryInventory.getGroceryFromOrderList(userID, data);
     }
 	
 }
