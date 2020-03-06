@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="groceryinventory.GroceryInventoryTest" time="0.074" tests="2" errors="0" skipped="0" failures="0">
+<testsuite name="groceryinventory.GroceryInventoryTest" time="0.061" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.3+12-b304.10"/>
@@ -61,6 +61,6 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testIndex" classname="groceryinventory.GroceryInventoryTest" time="0.034"/>
-  <testcase name="testGetAPI" classname="groceryinventory.GroceryInventoryTest" time="0.04"/>
+  <testcase name="testIndex" classname="groceryinventory.GroceryInventoryTest" time="0.037"/>
+  <testcase name="testGetAPI" classname="groceryinventory.GroceryInventoryTest" time="0.024"/>
 </testsuite>

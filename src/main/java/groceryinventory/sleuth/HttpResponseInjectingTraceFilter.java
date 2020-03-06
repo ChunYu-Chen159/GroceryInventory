@@ -21,6 +21,8 @@ public class HttpResponseInjectingTraceFilter extends GenericFilterBean {
 
     @Value("${info.version}")
     private String version;
+    @Value("${spring.application.name}")
+    private String appName;
 
     public HttpResponseInjectingTraceFilter(Tracer tracer, HttpSpanInjector spanInjector) {
         this.tracer = tracer;
@@ -36,6 +38,7 @@ public class HttpResponseInjectingTraceFilter extends GenericFilterBean {
         }
         ((HttpServletResponse) servletResponse).addHeader("ZIPKIN-TRACE-ID", Long.toString(currentSpan.getTraceId()));
         currentSpan.tag("http.version", version);
+        currentSpan.tag("http.appName", appName);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
