@@ -2,5 +2,6 @@ groceryinventory/GroceryInventory.class
 groceryinventory/feign/NotificationInterface.class
 groceryinventory/GroceryInventoryController.class
 groceryinventory/feign/OrderingInterface.class
+groceryinventory/sleuth/HttpResponseInjectingTraceFilter.class
 groceryinventory/GroceryInventoryApplication.class
 groceryinventory/SwaggerConfig.class
