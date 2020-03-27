@@ -28,7 +28,7 @@ public class GroceryInventoryController {
     }
 
 	// 模擬404
-	@ApiOperation(value = "測試此伺服器是否成功連線", notes = "成功連線就回傳success")
+	@ApiOperation(value = "模擬404", notes = "回傳404")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/index2", method = RequestMethod.GET)
 	public ResponseEntity<GroceryInventory> index2()
@@ -37,8 +37,8 @@ public class GroceryInventoryController {
 		return ResponseEntity.notFound().build();
 	}
 
-	// 模擬回應
-	@ApiOperation(value = "測試是否成功連線", notes = "成功連線就回傳success")
+	// 模擬回應延遲
+	@ApiOperation(value = "模擬回應延遲", notes = "回應延遲")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/index3", method = RequestMethod.GET)
 	public String index3()
