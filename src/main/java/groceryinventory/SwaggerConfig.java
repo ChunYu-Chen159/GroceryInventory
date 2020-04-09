@@ -1,5 +1,6 @@
 package groceryinventory;
 
+import com.soselab.vmamvserviceclient.service.ContractAnalyzer;
 import com.soselab.vmamvserviceclient.service.ServiceDependencyAnalyzer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,26 +15,33 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.io.IOException;
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 
     @Autowired
     ServiceDependencyAnalyzer serviceDependencyAnalyzer;
+    @Autowired
+    ContractAnalyzer contractAnalyzer;
 
     @Value("${spring.application.name}")
     private String appName;
     @Value("${info.version}")
     private String version;
+    @Value("${contract.path}")
+    private String contractPath;
 
     @Bean
-    public Docket createRestApi() {
+    public Docket createRestApi() throws IOException {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(appName))
                 .paths(PathSelectors.any())
                 .build()
+                .extensions(contractAnalyzer.swaggerExtension(contractPath + appName + ".groovy"))
                 .extensions(serviceDependencyAnalyzer.swaggerExtension(appName));
     }
 
