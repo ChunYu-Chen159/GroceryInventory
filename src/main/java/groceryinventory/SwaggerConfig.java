@@ -32,16 +32,18 @@ public class SwaggerConfig {
     private String version;
     @Value("${contract.path}")
     private String contractPath;
+    @Value("${test.path}")
+    private String testPath;
 
     @Bean
-    public Docket createRestApi() throws IOException {
+    public Docket createRestApi() throws Exception {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(appName))
                 .paths(PathSelectors.any())
                 .build()
-                .extensions(contractAnalyzer.swaggerExtension(contractPath + appName + ".groovy"))
+                .extensions(contractAnalyzer.swaggerExtension(contractPath + appName + ".groovy", testPath + "testng-results.xml", appName))
                 .extensions(serviceDependencyAnalyzer.swaggerExtension(appName));
     }
 

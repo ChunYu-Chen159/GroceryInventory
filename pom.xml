@@ -172,6 +172,13 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
 		</dependency>
+
+		<!-- 產生Test的xml檔案(在target/surefire-reports/) -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8</version>
+		</dependency>
 	</dependencies>
 	
 	<dependencyManagement>
@@ -187,6 +194,7 @@
 	</dependencyManagement>
 
 	<build>
+		<!--	要先mvn test產生檔案再mvn package or mvn install	-->
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -202,6 +210,14 @@
 					<include>**/*.groovy</include>
 				</includes>
 				<targetPath>${project.artifactId}/contracts/</targetPath>
+			</resource>
+			<resource>
+				<directory>target/surefire-reports</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<targetPath>${project.artifactId}/testResult/</targetPath>
 			</resource>
 		</resources>
 
