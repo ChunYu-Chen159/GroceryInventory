@@ -9,11 +9,21 @@
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!-- local -->
+    <!--    <include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+
+    <!-- Jenkins -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
 
     <root level="INFO">
         <appender-ref ref="LOGSTASH" />
         <appender-ref ref="CONSOLE" />
+
+        <!-- Jenkins -->
+        <appender-ref ref="FILE" />
     </root>
 
     <logger name="org.zalando.logbook">
