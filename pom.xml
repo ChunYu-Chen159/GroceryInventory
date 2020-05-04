@@ -179,6 +179,13 @@
 			<artifactId>testng</artifactId>
 			<version>6.8</version>
 		</dependency>
+
+		<!-- Spring Cloud Contract Provider -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
+			<!--			<scope>test</scope>-->
+		</dependency>
 	</dependencies>
 	
 	<dependencyManagement>
