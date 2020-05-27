@@ -19,6 +19,7 @@ public class GroceryInventoryController {
 	@Autowired
 	OrderingInterface orderingInterface;
 	
+/*
 	@ApiOperation(value = "測試此伺服器是否成功連線", notes = "成功連線就回傳success")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -26,6 +27,7 @@ public class GroceryInventoryController {
     {
 		return "success";
     }
+*/
 
 /*	// 模擬404
 	@ApiOperation(value = "模擬404", notes = "回傳404")
