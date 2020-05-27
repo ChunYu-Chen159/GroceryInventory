@@ -27,7 +27,7 @@ public class GroceryInventoryController {
 		return "success";
     }
 
-	// 模擬404
+/*	// 模擬404
 	@ApiOperation(value = "模擬404", notes = "回傳404")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/index2", method = RequestMethod.GET)
@@ -54,7 +54,7 @@ public class GroceryInventoryController {
 			e.printStackTrace();
 		}
 		return result;
-	}
+	}*/
 
 
 	@ApiOperation(value = "取得周邊商品", notes = "列出所有周邊商品")
