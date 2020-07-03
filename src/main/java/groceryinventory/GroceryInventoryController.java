@@ -95,7 +95,7 @@ public class GroceryInventoryController {
 		return result;
     }
 
-	@FeignRequest(client = OrderingInterface.class, method = "orderingGrocery", parameterTypes = {String.class, String.class})
+	@FeignRequest(client = OrderingInterface.class, method = "orderingGrocery", parameterTypes = {String.class, String.class, String.class})
 	@ApiOperation(value = "購買周邊商品", notes = "若購買成功則回傳購買成功")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "orderingGrocery", method = RequestMethod.GET)
