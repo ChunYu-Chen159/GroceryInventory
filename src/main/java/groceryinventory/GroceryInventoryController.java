@@ -99,13 +99,13 @@ public class GroceryInventoryController {
 	@ApiOperation(value = "購買周邊商品", notes = "若購買成功則回傳購買成功")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "orderingGrocery", method = RequestMethod.GET)
-    public String orderingGrocery(@ApiParam(required = true, name = "ID", value = "購買的商品編號") @RequestParam("groceryID") String ID, @ApiParam(required = true, name = "quantity", value = "購買的商品數量") @RequestParam("quantity") String quantity)
+    public String orderingGrocery(@ApiParam(required = true, name = "userID", value = "使用者編號") @RequestParam("userID") String userID, @ApiParam(required = true, name = "ID", value = "購買的商品編號") @RequestParam("groceryID") String ID, @ApiParam(required = true, name = "quantity", value = "購買的商品數量") @RequestParam("quantity") String quantity)
     {
 		String result = "";
 		
 		try {
 			
-			result = orderingInterface.orderingGrocery(ID, quantity);
+			result = orderingInterface.orderingGrocery(userID, ID, quantity);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
