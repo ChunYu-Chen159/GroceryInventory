@@ -16,4 +16,7 @@ public interface OrderingInterface {
     @RequestMapping(value = "/getGroceryFromOrderList", method = RequestMethod.GET)
     String getGroceryFromOrderList(@RequestParam("userID") String userID);
 
+    @RequestMapping(value = "/getSomething", method = RequestMethod.GET)
+    String getSomething(@RequestParam("userID") String userID);
+
 }
