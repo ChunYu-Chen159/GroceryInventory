@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Random;
+
 @Api(value = "GroceryInventoryController", tags = "與周邊商品相關的所有一切都在這裡")
 @RestController
 public class GroceryInventoryController {
@@ -139,10 +141,22 @@ public class GroceryInventoryController {
 	@ApiOperation(value = "拿資訊", notes = "拿資訊")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/getGroceryInformation", method = RequestMethod.GET)
-	public String getGroceryInformation(@ApiParam(required = true, name = "userID", value = "使用者編號") @RequestParam("userID") String userID)
+	public String getGroceryInformation(@ApiParam(required = true, name = "userID", value = "使用者編號") @RequestParam("userID") String userID, @ApiParam(required = true, name = "probability", value = "出錯機率") @RequestParam("probability") double probability)
 	{
 
-		return orderingInterface.getGroceryInformation(userID);
+		Random random = new Random();
+
+		int num = random.nextInt(1000) + 1;
+
+		if(num <= (int)(probability * 1000)){
+			return orderingInterface.getGroceryInformation(userID);
+		}else{
+			return "success";
+		}
+
+
+
+
 
 	}
 	
