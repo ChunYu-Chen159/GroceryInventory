@@ -31,36 +31,6 @@ public class GroceryInventoryController {
     }
 */
 
-/*	// 模擬404
-	@ApiOperation(value = "模擬404", notes = "回傳404")
-	@CrossOrigin(origins = "*")
-	@RequestMapping(value="/index2", method = RequestMethod.GET)
-	public ResponseEntity<GroceryInventory> index2()
-	{
-
-		return ResponseEntity.notFound().build();
-	}
-
-	// 模擬回應延遲
-	@ApiOperation(value = "模擬回應延遲", notes = "回應延遲")
-	@CrossOrigin(origins = "*")
-	@RequestMapping(value="/index3", method = RequestMethod.GET)
-	public String index3()
-	{
-
-		String result = "wait success";
-
-
-		long num = (long)(Math.random() * 30);
-		try {
-			Thread.sleep(num);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}*/
-
-
 	@ApiOperation(value = "取得周邊商品", notes = "列出所有周邊商品")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "getGrocery", method = RequestMethod.GET)
@@ -137,7 +107,7 @@ public class GroceryInventoryController {
 		return groceryInventory.getGroceryFromOrderList(userID, data);
     }
 
-	@FeignRequest(client = OrderingInterface.class, method = "getGroceryInformation", parameterTypes = String.class)
+/*	@FeignRequest(client = OrderingInterface.class, method = "getGroceryInformation", parameterTypes = String.class)
 	@ApiOperation(value = "拿資訊", notes = "拿資訊")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/getGroceryInformation", method = RequestMethod.GET)
@@ -154,11 +124,7 @@ public class GroceryInventoryController {
 			return "success";
 		}
 
-
-
-
-
-	}
+	}*/
 	
 }
 
